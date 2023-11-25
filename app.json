@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "itunes-movie",
+    "name": "Itunes Movie",
     "slug": "itunes-movie",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.itunesmovie"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.itunesmovie"
     },
     "web": {
       "favicon": "./assets/favicon.png"
