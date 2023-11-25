@@ -8,6 +8,7 @@ import { getTracks } from "../api/tracks";
 interface ITrackState {
   tracks: TTrack[];
   favoriteTrackIds: number[];
+  isLoading: boolean;
   loadTracks: () => Promise<void>;
   toggleFavorite: (trackId: number) => void;
   isFavorite: (trackId: number) => boolean;
@@ -20,10 +21,13 @@ export const useTrackStore = create<ITrackState>(
     (set, get) => ({
       tracks: [],
       favoriteTrackIds: [],
+      isLoading: false,
       loadTracks: async () => {
         if (get().tracks.length > 0) {
           return;
         }
+
+        set((state) => ({ ...state, isLoading: true }));
 
         const response = await getTracks();
 
@@ -31,7 +35,11 @@ export const useTrackStore = create<ITrackState>(
           return;
         }
 
-        return set((state) => ({ ...state, tracks: response.results }));
+        return set((state) => ({
+          ...state,
+          tracks: response.results,
+          isLoading: false,
+        }));
       },
       toggleFavorite: (trackId) => {
         if (!get().favoriteTrackIds.includes(trackId)) {

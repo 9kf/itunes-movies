@@ -14,6 +14,12 @@ export const AlignedView = styled(View)<{ horizontal?: boolean }>`
   gap: 8px;
 `;
 
+export const CenterView = styled(View)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const StyledText = styled(Text)<{
   variant?: "paragraph" | "sub-header" | "title" | "label";
 }>`
